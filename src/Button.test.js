@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button.js';
 import {shallow, mount} from 'enzyme';
-
+import App from './App.js'
 
 test('renders without crashing, shallow smoke test', () => {
     shallow(<Button />);  // shallow smoke test
@@ -16,7 +16,7 @@ test('btn with className ButtonClass', () => {
 });
 
 test('Btn onClick, empty inputs', () => {
-    const wrapper = mount(<Button/>);
+    const wrapper = mount(<App/>);
     wrapper.setState({name:'g', mail:'g@g.com'});
     wrapper.find('.buttonClass').simulate('click');
     expect(wrapper.state('name')).toBe('');

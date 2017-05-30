@@ -1,21 +1,48 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Form from "./Form";
+import Button from "./Button";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            mail: ''
+        }
+
+        this.btnFunc = this.btnFunc.bind(this);
+        // this.inputFunc = this.inputFunc.bind(this);
+        this.nameFunc = this.nameFunc.bind(this);
+        this.mailFunc = this.mailFunc.bind(this);
+    }
+
+    nameFunc(event) {
+        this.setState({name: event.target.value});
+    };
+    mailFunc(event){
+        this.setState({mail: event.target.value});
+    };
+
+    // inputFunc(event){
+    // let id = event.target.id;
+    // this.setState({[id]: event.target.value})
+    // }
+    btnFunc(){
+        this.setState({name:'', mail:''});
+    };
+
+
+    render() {
+        return (
+            <div className="App">
+                {/*input = {this.inputFunc}*/}
+                <Form  name={this.nameFunc} mail={this.mailFunc}/>
+                <Button btn={this.btnFunc}/>
+            </div>
+        );
+    }
 }
 
 export default App;

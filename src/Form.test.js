@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './Form.js';
 import {shallow, mount} from 'enzyme';
-
+import App from './App.js'
 
 test('renders without crashing, shallow smoke test', () => {
     shallow(<Form />);  // shallow smoke test
@@ -17,9 +17,9 @@ test('inputs', () => {
 });
 
 test('Form change', () => {
-    const wrapper = mount(<Form/>);
+    const wrapper = mount(<App/>);
     wrapper.find('.input-name').simulate('change',{target:{value: 'G'}});
     wrapper.find('.input-mail').simulate('change',{target:{value: 'g@g.com'}});
-    expect(wrapper.state('inputName')).toBe('G');
-    expect(wrapper.state('inputMail')).toBe('g@g.com');
+    expect(wrapper.state('name')).toBe('G');
+    expect(wrapper.state('mail')).toBe('g@g.com');
 });
